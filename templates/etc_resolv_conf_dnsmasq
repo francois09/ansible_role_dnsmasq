@@ -1,0 +1,5 @@
+{% if 'nameserver' in groups %}
+{%   for dns in groups['nameserver'] %}
+nameserver {{ hostvars[dns]['ansible_default_ipv4']['address'] }}
+{%   endfor %}
+{% endif %}

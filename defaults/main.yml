@@ -1,0 +1,14 @@
+---
+# Default do nothing
+dnsmasq__install: False
+dnsmasq__configure: False
+
+# defaults file for dnsmasq
+dnsmasq__default_packages:
+  - dnsmasq-base
+
+dnsmasq__conf_file: "/etc/dnsmasq.proxy.conf"
+dnsmasq__resolv_conf_file: "/etc/resolv.conf.dnsmasq"
+dnsmasq__pid_file: "/var/run/proxy.dnsmasq.pid"
+
+dnsmasq__neg_ttl: 5

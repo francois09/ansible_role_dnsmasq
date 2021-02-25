@@ -1,0 +1,34 @@
+---
+- name: Dnsmasq install packages
+  apt:
+    name: "{{ dnsmasq__default_packages }}"
+    update_cache: yes
+    state: present
+  when: dnsmasq__install
+
+# Create resolv config file
+- name: Create resolv config file
+  template:
+    src: etc_resolv_conf_dnsmasq
+    dest: "{{ dnsmasq__resolv_conf_file }}"
+  notify: Reload DNS Masq
+  when:
+    - dnsmasq__configure
+
+# Create dnsmasq config file
+- name: Create dnsmasq config file
+  template:
+    src: dnsmasq_conf
+    dest: "{{ dnsmasq__conf_file }}"
+  notify: Restart DNS Masq
+  when:
+    - dnsmasq__configure
+
+# Create dnsmasq service
+- name: Create dnsmasq systemd service file
+  template:
+    src: dnsmasq_service
+    dest: /etc/systemd/system/dnsmasq.service
+  notify: Restart DNS Masq
+  when:
+    - dnsmasq__configure

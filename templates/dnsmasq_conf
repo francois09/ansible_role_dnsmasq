@@ -1,0 +1,9 @@
+## dnsmasq conf file created by Ansible for DNS forwarding
+strict-order
+no-hosts
+pid-file={{ dnsmasq__pid_file }}
+except-interface=lo
+bind-dynamic
+interface={{ dnsmasq__interface }}
+resolv-file={{ dnsmasq__resolv_conf_file }}
+neg-ttl={{ dnsmasq__neg_ttl }}

@@ -1,0 +1,11 @@
+---
+# Empty handlers
+- name: Restart DNS Masq
+  service:
+    name: dnsmasq
+    state: restarted
+
+- name: Reload DNS Masq
+  service:
+    name: dnsmasq
+    state: reloaded
