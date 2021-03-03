@@ -12,3 +12,4 @@ dnsmasq__resolv_conf_file: "/etc/resolv.conf.dnsmasq"
 dnsmasq__pid_file: "/var/run/proxy.dnsmasq.pid"
 
 dnsmasq__neg_ttl: 5
+dnsmasq__enabled: True

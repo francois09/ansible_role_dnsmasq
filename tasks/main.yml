@@ -32,3 +32,11 @@
   notify: Restart DNS Masq
   when:
     - dnsmasq__configure
+
+- name: Enable dnsmasq
+  service:
+    name: dnsmasq
+    enabled: "{% if dnsmasq__enabled %}yes{% else %}no{% endif %}"
+  when:
+    - dnsmasq__configure
+
