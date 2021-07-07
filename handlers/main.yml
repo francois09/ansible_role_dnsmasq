@@ -1,5 +1,5 @@
 ---
-# Empty handlers
+# dnsmasq handlers
 - name: Restart DNS Masq
   service:
     name: dnsmasq
