@@ -1,5 +1,7 @@
 {% if 'nameserver' in groups %}
 {%   for dns in groups['nameserver'] %}
-nameserver {{ hostvars[dns]['ansible_default_ipv4']['address'] }}
+{%     if hostvars[dns]['ansible_default_ipv4']['address']|ipaddr(dnsmasq__network) %}
+nameserver {{ hostvars[dns]['ansible_default_ipv4']['address']|ipaddr(dnsmasq__network) }}
+{%     endif %}
 {%   endfor %}
 {% endif %}
