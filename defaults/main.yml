@@ -13,3 +13,4 @@ dnsmasq__pid_file: "/var/run/proxy.dnsmasq.pid"
 
 dnsmasq__neg_ttl: 5
 dnsmasq__enabled: True
+dnsmasq__network: 0.0.0.0/0
