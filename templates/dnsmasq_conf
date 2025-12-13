@@ -12,8 +12,8 @@ dns-forward-max={{ dnsmasq__forward_max }}
 {% endif %}
 {% if 'nameserver' in groups %}
 {%   for dns in groups['nameserver'] %}
-{%     if hostvars[dns]['ansible_default_ipv4']['address']|ipaddr(dnsmasq__network) %}
-server={{ hostvars[dns]['ansible_default_ipv4']['address']|ipaddr(dnsmasq__network) }}
+{%     if hostvars[dns]['ansible_default_ipv4']['address']|ansible.utils.ipaddr(dnsmasq__network) %}
+server={{ hostvars[dns]['ansible_default_ipv4']['address']|ansible.utils.ipaddr(dnsmasq__network) }}
 {%     endif %}
 {%   endfor %}
 {% endif %}
