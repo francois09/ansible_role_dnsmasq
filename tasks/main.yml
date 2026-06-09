@@ -33,10 +33,25 @@
   when:
     - dnsmasq__configure
 
-- name: Enable dnsmasq
+- name: Enable/Disable dnsmasq
   service:
     name: dnsmasq
     enabled: "{% if dnsmasq__enabled %}yes{% else %}no{% endif %}"
   when:
     - dnsmasq__configure
 
+- name: Disable/Enable named
+  service:
+    name: named
+    enabled: "{% if dnsmasq__enabled %}no{% else %}yes{% endif %}"
+  failed_when: no
+  when:
+    - dnsmasq__configure
+
+- name: Stop/Start named
+  service:
+    name: named
+    state: "{% if dnsmasq__enabled %}stopped{% else %}started{% endif %}"
+  failed_when: no
+  when:
+    - dnsmasq__configure
