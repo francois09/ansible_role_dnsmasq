@@ -4,7 +4,13 @@ no-hosts
 pid-file={{ dnsmasq__pid_file }}
 except-interface=lo
 bind-dynamic
+{% if dnsmasq__interface is iterable and dnsmasq__interface is not string %}
+{% for iface in dnsmasq__interface %}
+interface={{ iface }}
+{% endfor %}
+{% else %}
 interface={{ dnsmasq__interface }}
+{% endif %}
 resolv-file={{ dnsmasq__resolv_conf_file }}
 neg-ttl={{ dnsmasq__neg_ttl }}
 {% if dnsmasq__forward_max is defined %}
